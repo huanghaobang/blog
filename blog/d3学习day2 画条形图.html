@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>如何画一个条形图 | blog</title>
+    <meta name="generator" content="VuePress 1.5.0">
+    
+    <meta name="description" content="Vuepress blog demo">
+    <link rel="preload" href="/blog/assets/css/0.styles.f9b52b88.css" as="style"><link rel="preload" href="/blog/assets/js/app.6db84c79.js" as="script"><link rel="preload" href="/blog/assets/js/2.a808d181.js" as="script"><link rel="preload" href="/blog/assets/js/7.9d07453b.js" as="script"><link rel="prefetch" href="/blog/assets/js/3.5a39a38a.js"><link rel="prefetch" href="/blog/assets/js/4.2b7fc900.js"><link rel="prefetch" href="/blog/assets/js/5.bb5b8508.js"><link rel="prefetch" href="/blog/assets/js/6.74f6c903.js"><link rel="prefetch" href="/blog/assets/js/8.696d3fd6.js">
+    <link rel="stylesheet" href="/blog/assets/css/0.styles.f9b52b88.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/blog/" class="home-link router-link-active"><!----> <span class="site-name">blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><!---->  <!----> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="如何画一个条形图"><a href="#如何画一个条形图" class="header-anchor">#</a> 如何画一个条形图</h1> <h2 id="_1-画布svg"><a href="#_1-画布svg" class="header-anchor">#</a> 1.画布SVG</h2> <h6 id="html"><a href="#html" class="header-anchor">#</a> html</h6> <div class="language- extra-class"><pre class="language-text"><code>&lt;svg width=&quot;1600&quot; height=&quot;800&quot; id=&quot;mainsvg&quot; class=&quot;svgs&quot;&gt;&lt;/svg&gt;
+</code></pre></div><h6 id="js"><a href="#js" class="header-anchor">#</a> js</h6> <div class="language- extra-class"><pre class="language-text"><code>const g=svg.append('g')
+    .attr('transform',`translate(${margin.left},${margin.top})`);
+//移动画布svg
+</code></pre></div><h2 id="_2-建立坐标轴"><a href="#_2-建立坐标轴" class="header-anchor">#</a> 2.建立坐标轴</h2> <h3 id="_2-1-建立比例尺-实质为一个函数"><a href="#_2-1-建立比例尺-实质为一个函数" class="header-anchor">#</a> 2.1 建立比例尺(实质为一个函数)</h3> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> xscale<span class="token operator">=</span>d3<span class="token punctuation">.</span><span class="token function">scaleLinear</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">domain</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span>d3<span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>data<span class="token punctuation">,</span><span class="token parameter">d</span><span class="token operator">=&gt;</span>d<span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">range</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span>innerwidth<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> yscale<span class="token operator">=</span>d3<span class="token punctuation">.</span><span class="token function">scaleBand</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">domain</span><span class="token punctuation">(</span>data<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token parameter">d</span><span class="token operator">=&gt;</span>d<span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">range</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span>innerHeight<span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">padding</span><span class="token punctuation">(</span><span class="token number">0.1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h5 id="tips"><a href="#tips" class="header-anchor">#</a> tips</h5> <h6 id="_1-padding控间隔制条形图y轴间距"><a href="#_1-padding控间隔制条形图y轴间距" class="header-anchor">#</a> 1.padding控间隔制条形图y轴间距</h6> <h3 id="_2-2建立坐标轴"><a href="#_2-2建立坐标轴" class="header-anchor">#</a> 2.2建立坐标轴</h3> <h4 id="y轴"><a href="#y轴" class="header-anchor">#</a> y轴</h4> <div class="language- extra-class"><pre class="language-text"><code>const yAxis=d3.axisLeft(yscale);
+g.append('g').call(yAxis);
+</code></pre></div><h4 id="x轴"><a href="#x轴" class="header-anchor">#</a> x轴</h4> <div class="language- extra-class"><pre class="language-text"><code>const xAxis=d3.axisBottom(xscale);
+g.append('g').call(xAxis).attr('transform',`translate(0,${innerHeight})`)
+//默认位置会在原点放，对x轴平移到底部
+</code></pre></div><h2 id="_3-添加数据"><a href="#_3-添加数据" class="header-anchor">#</a> 3.添加数据</h2> <h3 id="_3-1数据参考"><a href="#_3-1数据参考" class="header-anchor">#</a> 3.1数据参考</h3> <div class="language- extra-class"><pre class="language-text"><code>const data=[
+    {name:'hhb',value:2},
+    {name:'ly',value:10},
+    {name:'wzh',value:13},
+    {name:'clh',value:12},
+    {name:'hhb1',value:4},
+    {name:'ly1',value:5},
+    {name:'wzh1',value:10},
+    {name:'clh1',value:8},
+    {name:'xfs',value:9},
+];
+</code></pre></div><h4 id="_3-2数据添加到坐标轴"><a href="#_3-2数据添加到坐标轴" class="header-anchor">#</a> 3.2数据添加到坐标轴</h4> <div class="language- extra-class"><pre class="language-text"><code>data.forEach(
+    d=&gt;{
+        g.append('rect')
+            .attr('width',xscale(d.value))
+            .attr('height',yscale.bandwidth())
+            .attr('fill','green')
+            .attr('opacity',0.8)
+            .attr('y',yscale(d.name));
+
+    });
+//opacity 修改透明度
+</code></pre></div><h2 id="_4-细节补充"><a href="#_4-细节补充" class="header-anchor">#</a> 4.细节补充</h2> <h4 id="_4-1-添加标题"><a href="#_4-1-添加标题" class="header-anchor">#</a> 4.1 添加标题</h4> <div class="language- extra-class"><pre class="language-text"><code>g.append('text').text('demo test')
+    .attr('font-size','3em')
+    .attr('transform',`translate(${innerwidth/2},0)`)
+    .attr('text-anchor','middle');
+    //标题居中
+</code></pre></div><h4 id="_4-2-修改坐标系字体大小"><a href="#_4-2-修改坐标系字体大小" class="header-anchor">#</a> 4.2 修改坐标系字体大小</h4> <div class="language- extra-class"><pre class="language-text"><code>d3.selectAll('.tick text').attr('font-size','2em');
+</code></pre></div><img src="C:\Users\ADMIN\AppData\Roaming\Typora\typora-user-images\image-20200606011550159.png" alt="image-20200606011550159" style="zoom:33%;"> <h6 id="坐标轴标签为tick"><a href="#坐标轴标签为tick" class="header-anchor">#</a> 坐标轴标签为tick</h6> <h2 id="_5-结果预览"><a href="#_5-结果预览" class="header-anchor">#</a> 5.结果预览</h2> <p><img src="C:%5CUsers%5CADMIN%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200606011711664.png" alt="image-20200606011711664"></p></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/blog/assets/js/app.6db84c79.js" defer></script><script src="/blog/assets/js/2.a808d181.js" defer></script><script src="/blog/assets/js/7.9d07453b.js" defer></script>
+  </body>
+</html>
