@@ -1,6 +1,7 @@
 module.exports = {
-  title: "vuepress-theme-reco",
-  description: 'A simple and beautiful vuepress blog theme .',
+    base: '/blog/',
+  title: "Hhb",
+  description: '咸鱼Blog',
   dest: 'public',
   head: [
     ['link', { rel: 'icon', href: '/favicon.ico' }],
@@ -11,16 +12,16 @@ module.exports = {
     nav: [
       { text: 'Home', link: '/', icon: 'reco-home' },
       { text: 'TimeLine', link: '/timeline/', icon: 'reco-date' },
-      { text: 'Docs', 
+      { text: 'Docs',
         icon: 'reco-message',
         items: [
           { text: 'vuepress-reco', link: '/docs/theme-reco/' }
         ]
       },
-      { text: 'Contact', 
+      { text: 'Contact',
         icon: 'reco-message',
         items: [
-          { text: 'GitHub', link: 'https://github.com/recoluan', icon: 'reco-github' }
+          { text: 'GitHub', link: 'https://github.com/huanghaobang/blog', icon: 'reco-github' }
         ]
       }
     ],
@@ -31,7 +32,7 @@ module.exports = {
         'plugin',
         'api'
       ]
-    },  
+    },
     type: 'blog',
     // 博客设置
     blogConfig: {
@@ -46,19 +47,14 @@ module.exports = {
     },
     friendLink: [
       {
-        title: '午后南杂',
-        desc: 'Enjoy when you can, and endure when you must.',
-        email: '1156743527@qq.com',
-        link: 'https://www.recoluan.com'
+        title: 'nyqx',
+        desc: 'dog',
+        email: '1173139682@qq.com',
+        link: 'https://www.nyqx.wang/'
       },
-      {
-        title: 'vuepress-theme-reco',
-        desc: 'A simple and beautiful vuepress Blog & Doc theme.',
-        avatar: "https://vuepress-theme-reco.recoluan.com/icon_vuepress_reco.png",
-        link: 'https://vuepress-theme-reco.recoluan.com'
-      },
+
     ],
-    logo: '/logo.png',
+    logo: '/wen.jpg',
     // 搜索设置
     search: true,
     searchMaxSuggestions: 10,
@@ -67,9 +63,9 @@ module.exports = {
     // 最后更新时间
     lastUpdated: 'Last Updated',
     // 作者
-    author: 'reco_luan',
+    author: 'H-hb',
     // 作者头像
-    authorAvatar: '/avatar.png',
+    authorAvatar: '/tou.jpg',
     // 备案号
     record: 'xxxx',
     // 项目开始时间
@@ -96,4 +92,4 @@ module.exports = {
   markdown: {
     lineNumbers: true
   }
-}  
+}
